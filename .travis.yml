@@ -15,6 +15,6 @@ script:
 
 deploy:
   provider: script
-  script: echo $DOCKER_USERNAME
+  script: bash docker_push
   on:
     branch: master
