@@ -11,7 +11,5 @@ script:
   - docker build -t javiersanp/prueba .
   - docker run --rm javiersanp/prueba /bin/bash -c "python -m unittest discover"
 
-deploy:
-  provider: script
-  script:
-    - docker image ls
+after_success:
+  - docker image ls
