@@ -7,12 +7,14 @@ service:
   - docker
 
 script:
-  - python -m unittest discover
+  - docker-compose -v
   - docker build -t javiersanp/prueba .
   - docker run --rm javiersanp/prueba /bin/bash -c "python -m unittest discover"
   - docker image ls
   - echo $DOCKER_USERNAME
 
-after_success:
-  - echo $DOCKER_USERNAME
-  - docker image ls
+deploy:
+  provider: script
+  script: echo $DOCKER_USERNAME
+  on:
+    branch: master
