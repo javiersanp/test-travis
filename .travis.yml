@@ -10,6 +10,8 @@ script:
   - python -m unittest discover
   - docker build -t javiersanp/prueba .
   - docker run --rm javiersanp/prueba /bin/bash -c "python -m unittest discover"
+  - docker image ls
 
 after_success:
+  - echo $DOCKER_USERNAME
   - docker image ls
