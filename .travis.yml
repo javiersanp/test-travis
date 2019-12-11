@@ -9,7 +9,9 @@ service:
 script:
   - python -m unittest discover
   - docker build -t javiersanp/prueba .
-  - docker run -it --rm javiersanp/prueba bash -c "python -m unittest discover"
+  - docker run --rm javiersanp/prueba /bin/bash -c "python -m unittest discover"
 
 deploy:
-  - docker push javiersanp/prueba
+  provider: script
+  script:
+    - docker image ls
