@@ -1,9 +1,8 @@
 #!/bin/bash
 set -ex
 
-curl -fsSL "https://github.com/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz" | tar xv
-chmod +x $(pwd)/docker-credential-pass
-sudo mv $(pwd)/docker-credential-pass /usr/local/bin/
+sudo curl -fsSL "https://github.com/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz" | tar xv > /usr/local/bin/docker-credential-pass
+sudo chmod +x /usr/local/bin/docker-credential-pass
 
 $(pwd)/docker-credential-pass version
 
