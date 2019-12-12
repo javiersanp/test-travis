@@ -1,6 +1,10 @@
 #!/bin/bash
 set -ex
 
+pass --version
+
+groups
+
 curl -fsSL "https://github.com/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz" | tar xv
 chmod + $(pwd)/docker-credential-pass
 
@@ -21,9 +25,17 @@ Expire-Date: 0
 %echo done
 EOF
 
+gpg --list-key
+
 echo $(gpg --no-auto-check-trustdb --list-secret-keys | grep ^sec | cut -d/ -f2 | cut -d" " -f1)
 
 pass init $(gpg --no-auto-check-trustdb --list-secret-keys | grep ^sec | cut -d/ -f2 | cut -d" " -f1)
+
+pass list
+
+docker-credential-pass list
+
+pass
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 docker push "$DOCKER_USERNAME"/prueba
