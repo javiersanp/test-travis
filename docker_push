@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-curl -fsSL "https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz" | tar xv
+curl -fsSL "https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz" | tar zxv
 DCP_PATH=$(pwd)/docker-credential-pass
 chmod +x $DCP_PATH
 sudo mv $DCP_PATH /usr/local/bin/
@@ -16,7 +16,6 @@ Subkey-Length: 1024
 Name-Real: Javier Sanchez
 Name-Email: javiersanp@gmail.com
 Expire-Date: 0
-# Do a commit here, so that we can later print "done" :-)
 %commit
 %echo done
 EOF
