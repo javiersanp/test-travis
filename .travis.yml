@@ -1,10 +1,12 @@
-language: python
+os: linux
+language: minimal
+service: docker
+install: skip
 
-python:
-  - "2.7"
-
-service:
-  - docker
+addons:
+  apt:
+    packages:
+      - pass
 
 script:
   - docker-compose -v
