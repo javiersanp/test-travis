@@ -4,9 +4,9 @@ set -ex
 curl -fsSL "https://github.com/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz" | tar xv
 DCP_PATH=$(pwd)/docker-credential-pass
 chmod +x $DCP_PATH
-sudo mv $DCP_PATH /usr/local/bin
+sudo mv $DCP_PATH /usr/local/bin/
 
-$(pwd)/docker-credential-pass version
+docker-credential-pass version
 
 # init key for pass
 gpg --batch --gen-key <<-EOF
