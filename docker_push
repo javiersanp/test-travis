@@ -20,17 +20,9 @@ Expire-Date: 0
 %echo done
 EOF
 
-gpg --list-key
-
 pass init $(gpg --no-auto-check-trustdb --list-secret-keys | grep ^sec | cut -d/ -f2 | cut -d" " -f1)
 
-pass list
-
-docker-credential-pass version
-
 docker-credential-pass list
-
-pass
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 docker push "$DOCKER_USERNAME"/prueba
