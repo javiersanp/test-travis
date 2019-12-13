@@ -26,4 +26,6 @@ echo $VERSION
 # pass init $(gpg --no-auto-check-trustdb --list-secret-keys | grep ^sec | cut -d/ -f2 | cut -d" " -f1)
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker push "$DOCKER_USERNAME"/prueba
+docker push "$DOCKER_USERNAME"/prueba:latest
+docker tag "$DOCKER_USERNAME"/prueba:latest "$DOCKER_USERNAME"/prueba:"$VERSION"
+docker push "$DOCKER_USERNAME"/prueba:"$VERSION"
