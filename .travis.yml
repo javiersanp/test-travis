@@ -9,6 +9,7 @@ addons:
       - pass
 
 script:
+  - echo $DOCKER_USERNAME
   - docker build -t javiersanp/prueba:test --build-arg REQUISITES=requisites-dev.txt .
   - docker run --rm javiersanp/prueba:test /bin/bash -c "python -m unittest discover"
   - docker build -t javiersanp/prueba:latest .
